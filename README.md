@@ -1,70 +1,142 @@
 # FreshDirect - Frontend Live Coding Case
 
+**Time limit:** 60 minutes
+**Stack:** Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui
+
+---
+
 ## Goal
 
-Build a grocery e-commerce homepage inspired by [FreshDirect](https://www.freshdirect.com).
+Build a grocery e-commerce homepage inspired by FreshDirect (https://www.freshdirect.com).
+
+The product listing should **generally resemble** the FreshDirect website. It does **not** need to be a pixel-perfect clone — the overall look and feel is enough. We are evaluating your component structure, state management, and UI sense, not your ability to trace a design.
+
+---
 
 ## Requirements
 
-### 1. Homepage - Product Listing
+### 1. Homepage — Product Listing
 
-- Display products from `mocks/product.tsx` as cards
-- Products can be grouped by category
-- The design should be clean, user-friendly, and similar to FreshDirect's current website
+- Display products from `mocks/products.tsx` as cards in a responsive grid.
+- Products can optionally be grouped by category (Produce, Dairy, Bakery, Meat, Frozen).
+- The design should be clean, user-friendly, and visually similar to FreshDirect.
+
+_Explanation:_ Your homepage is the main surface we are looking at. Think about spacing, grid breakpoints, hierarchy of information on the page, and a clear visual rhythm between cards.
 
 ### 2. Product Card
 
-- Each card should display the product **image**, **name**, and **price**
-- **Top-right corner:** a save/bookmark button
+Each card should display:
+
+- Product **image**
+- **Brand**
+- **Name**
+- **Price**
+- **Discounted price** (only some products have one — the card must handle both cases)
+- **Unit** (e.g. "1 lb", "500 g", "per bunch")
+- **Top-right corner:** a save / bookmark button (icon button)
 - **Bottom-right corner:** an "Add to Cart" button
+
+_Explanation:_ When a product has a discounted price, show both the original price (struck through) and the discounted price. When it does not, show only the regular price. The save button is visual-only — it does not need to persist. The "Add to Cart" button must actually add the product to the cart.
 
 ### 3. Header
 
-- A fixed header at the top of the page
-- Contains the logo/site name, a **search input**, and a **cart icon**
-- The search input should filter products by name in real time as the user types
-- The cart icon should show the number of items in the cart (badge)
+- A fixed header at the top of the page.
+- A **very simple layout is fine**: logo on the far left, cart icon on the far right.
+- The logo is already included in the project at `public/icons/fd-residential-logo.svg` — just use it as-is.
+- A **search input** that filters products by name in **real time** as the user types (no submit button required). Placement is up to you — centered in the header or just to the right of the logo both work.
+- The cart icon should show the number of items currently in the cart as a **badge**.
+- For icons you can use the **lucide-react** library (e.g. `ShoppingCart`, `Search`, `Bookmark`) — it is already installed.
+
+_Explanation:_ The search filters the same product grid on the page — it does not open a new view. The badge should update immediately when items are added or removed from the cart. You do not need to build anything fancy here — a clean, minimal header is enough.
 
 ### 4. Cart Drawer
 
-- Clicking the cart icon in the header opens a **drawer sliding in from the right**
-- The drawer lists all items added to the cart (name, price, quantity)
-- Users should be able to increase/decrease item quantity
-- The total price should be displayed
+- Clicking the cart icon in the header opens a **drawer sliding in from the right**.
+- The drawer lists all items added to the cart (name, price, quantity).
+- Users can **increase** and **decrease** the quantity of each item.
+- The **total price** is displayed at the bottom of the drawer.
+
+_Explanation:_ Decreasing a quantity to zero should remove the item from the cart. The total should reflect the discounted price when a product has one.
+
+---
 
 ## Technical Details
 
 - **Framework:** Next.js 16 (App Router)
-- **Styling:** Tailwind CSS v4
-- **UI Library:** shadcn/ui (Radix UI) - already integrated
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 (preferred)
+- **UI Library:** shadcn/ui (Radix UI) — **already installed and configured**
 - **Icons:** lucide-react
-- **Data:** `data/product.json` (static JSON, no API)
+- **Data source:** `mocks/products.tsx` (static, no API)
 
-### Adding shadcn/ui Components
+### Using shadcn/ui
 
-```bash
-npx shadcn@latest add button
-npx shadcn@latest add sheet
-npx shadcn@latest add badge
-```
+shadcn/ui is already set up in this project. You are encouraged to use it. Add more components on demand:
 
-### Running the Project
+    npx shadcn@latest add button
+    npx shadcn@latest add sheet
+    npx shadcn@latest add badge
 
-```bash
-npm install
-npm run dev
-```
+_Explanation:_ You do not need to build primitive components from scratch. Pull in whatever shadcn components help you move faster (Sheet for the drawer, Button, Input, Badge, etc.).
 
-The app will be available at [http://localhost:3000](http://localhost:3000).
+### Flexibility on tools
+
+- You may use **additional libraries** if they help you move faster.
+- If you do not want to write **Tailwind**, you may use another styling approach: plain CSS, CSS Modules, Sass, styled-components, vanilla-extract, etc.
+- Pick the tools you are most productive with — we care about the result and your reasoning.
+
+---
+
+## Running the Project
+
+    npm install
+    npm run dev
+
+The app will be available at http://localhost:3000.
+
+---
+
+## AI Usage Rules
+
+**Important — please read before you start.**
+
+You are **not** allowed to hand the case description to an AI and let it do the work for you. Copy-pasting the task into an LLM and using its output as your solution is not acceptable.
+
+### What is allowed
+
+- Asking an AI **how** to do something — for example: "how do I implement a slide-in drawer with shadcn/ui Sheet?", "what is the idiomatic way to share cart state in the Next.js App Router?".
+- Using an AI to explain concepts, APIs, error messages, or to help you debug.
+- Using an AI to remind you of syntax or recommend an approach that **you** then implement yourself.
+
+### What is not allowed
+
+- Pasting the full case or requirements into an LLM and asking it to produce the solution.
+- Copy-pasting large blocks of AI-generated code into your project.
+- Using any **IDE-integrated AI assistants**: Cursor AI, GitHub Copilot, Continue, Windsurf, Claude Code, Cody, Codeium, Tabnine, JetBrains AI Assistant, VS Code inline completions, etc. These must be **disabled** during the case.
+
+### How you may use AI
+
+- The LLM must be open in a **separate browser tab** (ChatGPT, Claude.ai, Gemini, etc.).
+- It must **not** be embedded in your editor and must not have automatic access to your project files.
+- Treat it like Stack Overflow: ask a focused question, read the answer, then write the code yourself.
+
+_Explanation:_ The point of this case is to see **how you think and how you build**, not how well an AI can solve it for you. Using AI as a reference is fine; using AI as the author is not.
+
+---
 
 ## Evaluation Criteria
 
 - Component structure and code organization
-- React state management (Context API or useState)
-- UI/UX quality and resemblance to FreshDirect
-- TypeScript usage
-- Tailwind CSS usage
+- React state management (Context API, useState, or a small state library)
+- UI / UX quality and overall resemblance to FreshDirect
+- TypeScript usage and type safety
+- Styling quality (Tailwind or whichever approach you chose)
+- Your reasoning when we ask about trade-offs
 
-## Time Limit
+---
 
-**60 minutes**
+## Tips
+
+- Focus on shipping something **working and clean** rather than covering every edge case.
+
+Good luck!
