@@ -8,7 +8,7 @@ Build a grocery e-commerce homepage inspired by [FreshDirect](https://www.freshd
 
 ### 1. Homepage - Product Listing
 
-- Display products from `data/product.json` as cards
+- Display products from `mocks/product.tsx` as cards
 - Products can be grouped by category
 - The design should be clean, user-friendly, and similar to FreshDirect's current website
 
