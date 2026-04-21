@@ -33,6 +33,7 @@ Each card should display:
 - **Price**
 - **Discounted price** (only some products have one — the card must handle both cases)
 - **Unit** (e.g. "1 lb", "500 g", "per bunch")
+- Prices in the data are stored in **euros** (`currency: "EUR"`), but on the UI they must be displayed in **US dollars ($)**. Use a fixed conversion rate of your choice (for example `1 EUR = 1.08 USD`) and apply it consistently to both the regular price and the discounted price.
 - **Top-right corner:** a save / bookmark button (icon button)
 - **Bottom-right corner:** an "Add to Cart" button
 
