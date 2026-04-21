@@ -80,6 +80,14 @@ shadcn/ui is already set up in this project. You are encouraged to use it. Add m
 
 _Explanation:_ You do not need to build primitive components from scratch. Pull in whatever shadcn components help you move faster (Sheet for the drawer, Button, Input, Badge, etc.).
 
+### Brand color
+
+A FreshDirect-style brand green is predefined in `app/globals.css` as the CSS variable `--fd-green` (hex `#298321`). The project is locked to light mode, so the color is consistent everywhere.
+
+You can use it directly with Tailwind utilities — e.g. `bg-fd-green`, `text-fd-green`, `border-fd-green`, `ring-fd-green` — or via `var(--fd-green)` in custom CSS.
+
+_Explanation:_ Use this for the "Add to Cart" button, active states, and any other brand accents. You do not have to use it, but it will make your UI look closer to FreshDirect with no extra effort.
+
 ### Flexibility on tools
 
 - You may use **additional libraries** if they help you move faster.
