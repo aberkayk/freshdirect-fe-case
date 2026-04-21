@@ -13,6 +13,30 @@ The product listing should **generally resemble** the FreshDirect website. It do
 
 ---
 
+## Visual Reference
+
+The screenshots below show roughly what the finished case should look like. Your implementation does not need to match these exactly — use them as a visual direction, not a specification.
+
+### Desktop
+
+![Desktop view](public/docs/desktop.png)
+
+### Tablet
+
+![Tablet view](public/docs/tablet.png)
+
+### Mobile
+
+![Mobile view](public/docs/mobile.png)
+
+### Cart drawer (open state)
+
+![Cart drawer](public/docs/cart-drawer.png)
+
+_Explanation:_ Notice the responsive grid (6 columns on desktop, 3 on tablet, 2 on mobile), the card anatomy (save button top-right, green "+" button bottom-right of the image, discounted price in red with strikethrough original + "Save X%" badge), and the right-side cart drawer with an empty state and a total row.
+
+---
+
 ## Requirements
 
 ### 1. Homepage — Product Listing
